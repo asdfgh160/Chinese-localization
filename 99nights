@@ -1,1 +1,1 @@
-loadstring(game:HttpGetAsync("https://gist.githubusercontent.com/asdfgh160/47aa9adb639e1c917b890c5d05a86d16/raw/125efa90b3c7435b3e1de714f7d61d5374c589f3/99script.lua"))()
+loadstring(game:HttpGetAsync("https://gist.githubusercontent.com/asdfgh160/280ec94fc7e48b2b593fd1d1dcb104a4/raw/e3d2113c3f4fd8d16fa80ed38e277bac7c407fb0/99%2520nights"))()
