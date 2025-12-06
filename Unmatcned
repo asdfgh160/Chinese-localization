@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/https://gist.githubusercontent.com/asdfgh160/680e0105ec6a193b8614f8e6445b5cd4/raw/c63fcfb5491a441d4ffe5de37a63d46c147c5768/*Unmatcned%25E6%25B1%2589%25E5%258C%2596%25E8%2584%259A%25E6%259C%25AC/InkGames/refs/heads/main/NewLoader.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/680e0105ec6a193b8614f8e6445b5cd4/raw/9a12d39e6a4ca3f9b05f96d1309814fa369c396b/*Unmatcned.lua"))()
