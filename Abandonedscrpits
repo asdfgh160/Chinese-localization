@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/74933d943f1d3e288b7176a315066249/raw/1c23b8a45aa5a798734885c2d553e06640d4882a/Abandoned.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/74933d943f1d3e288b7176a315066249/raw/1e67d757c1309e78fa2dffd0687a66a43549e413/Abandoned.lua"))()
