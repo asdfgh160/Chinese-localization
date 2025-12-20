@@ -1,0 +1,130 @@
+local Translations = {
+["Chilli Hub - Steal a Brainrot"] = "汉化脚本-偷走脑红（by YirdeX)",
+["Chilli"] = "偷走脑红",
+["Chilli Speed Boost"] = "辣椒速度增益",
+["Main"] = "主功能",
+["Stealer"] = "偷走器",
+["Helper"] = "辅助工具",
+["Player"] = "玩家",
+["Finder"] = "查找器",
+["Server"] = "服务器",
+["Discord"] = "社交平台",
+["Discord / Notes"] = "社交平台/说明",
+["Works best on low-ping servers (<120)"] = "在低延迟服务器效果最佳（延迟<120）",
+["Join my Discord to join secret servers 100% within 1"] = "加入我的社交平台，100%在1分钟内加入私密服务器",
+["Discord Link (Click to copy)"] = "社交平台链接（点击复制）",
+["Secret giveaway happening now on my Discord"] = "我的社交平台正在进行私密福利赠送",
+["Rejoin & Auto Load Script"] = "重新加入并自动加载脚本",
+["Server Tools"] = "服务器工具",
+["Rejoin Server"] = "重新加入服务器",
+["Server Hop"] = "切换服务器",
+["Job-ID Input"] = "任务ID输入",
+["Join Job-ID"] = "加入任务ID",
+["Copy Job-ID"] = "复制任务ID",
+["Finder & Auto Hop"] = "查找器与自动切换",
+["Auto Load Script"] = "自动加载脚本",
+["Start server hop to find target"] = "开始切换服务器查找目标",
+["Webhook URL"] = "网络钩子地址",
+["Find High Value Brainrot Server"] = "查找高价值脑腐服务器",
+["Min money per sec to find"] = "查找的最低每秒收益",
+["Find < 2 min Guaranteed Mythic Server"] = "2分钟内必找神话级服务器",
+["Player"] = "玩家",
+["Anti Ragdoll"] = "防布娃娃效果",
+["Speed boost UI - Q keybind"] = "速度增益界面 - Q键绑定",
+["Movement"] = "移动",
+["Infinity Jump"] = "无限跳跃",
+["Chilli Booster"] = "辣椒增幅器",
+["Utility"] = "实用功能",
+["Aimbot"] = "自瞄",
+["Fly to Highest value Brainrot - C keybind"] = "飞向最高价值脑腐 - C键绑定",
+["Tp to Best - X keybind (Need Flying Carpet)"] = "传送到最佳位置 - X键绑定（需飞毯）",
+["Anti Bee & Disco"] = "防蜜蜂与迪斯科",
+["ESP"] = "透视",
+["X Ray"] = "X光透视",
+["Optimizer"] = "优化器",
+["Your Base ESP"] = "己方基地透视",
+["Highest Value Brainrot ESP"] = "最高价值脑腐透视",
+["Timer ESP"] = "计时器透视",
+["Player ESP"] = "玩家透视",
+["Steal Upstairs - Y keybind"] = "盗取楼上 - Y键绑定",
+["Unlock Base (Need robux)"] = "解锁基地（需罗布乐思币）",
+["Desync"] = "解同步",
+["Disable Animation"] = "禁用动画",
+["Auto destroy Turret"] = "自动摧毁炮塔",
+["Show Steal Bar (For auto steal)"] = "显示盗取进度条（用于自动盗取）",
+["Auto buy Brainrot"] = "自动购买脑腐",
+["Min money per sec to buy"] = "购买的最低每秒收益",
+["Anti AFK"] = "防挂机",
+["Auto Lock Base"] = "自动锁定基地",
+["Auto Collect"] = "自动收集",
+["Collect Delay (minutes)"] = "收集延迟（分钟）",
+["Farm"] = "刷取",
+["Auto Fish"] = "自动钓鱼",
+["Auto Buy Best Rod"] = "自动购买最佳鱼竿",
+["Sell if less than M/s (ex:2m = 2 M/s)"] = "若收益低于指定值则出售（例：2m=2百万/秒）",
+["Auto Sell Pets"] = "自动出售宠物",
+["Auto Steal Brainrot"] = "自动盗取脑腐",
+["Steal Highest Brainrot only"] = "仅盗取最高价值脑腐",
+["Secret/OG only"] = "仅限私密/元老用户",
+["Auto kick on steal"] = "盗取时自动踢出",
+["Auto use cloner"] = "自动使用克隆器",
+["Booster"] = "增幅器",
+["Speed Boost"] = "速度增益",
+["Jump Boost"] = "跳跃增益",
+["Gravity"] = "重力",
+["Clone"] = "克隆",
+["Unlock"] = "解锁",
+["Steal upstairs"] = "盗取楼上",
+["OFF"] = "关闭"
+}
+
+local keys = {}
+for k in pairs(Translations) do
+    table.insert(keys, k)
+end
+table.sort(
+    keys,
+    function(a, b)
+        return #a > #b
+    end
+)
+
+local function safeReplace(text, old, new)
+    local result = ""
+    local start = 1
+    while true do
+        local i, j = string.find(text, old, start, true)
+        if not i then
+            result = result .. string.sub(text, start)
+            break
+        end
+        result = result .. string.sub(text, start, i - 1) .. new
+        start = j + 1
+    end
+    return result
+end
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then
+        return text
+    end
+    for _, k in ipairs(keys) do
+        text = safeReplace(text, k, Translations[k])
+    end
+    return text
+end
+
+local oldNewIndex
+oldNewIndex =
+    hookmetamethod(
+    game,
+    "__newindex",
+    function(self, key, value)
+        if key == "Text" and type(value) == "string" then
+            value = translateText(value)
+        end
+        return oldNewIndex(self, key, value)
+    end
+)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()
