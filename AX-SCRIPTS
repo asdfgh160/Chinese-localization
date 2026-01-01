@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/960c0a167e7d99ea0711d0cb3bea021c/raw/4b8ef10fc8e8b96d00d71e683ebdb13b64df9af7/AX-SCRIPTS.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/960c0a167e7d99ea0711d0cb3bea021c/raw/3027658b022a01c71423c4f7f402a78cedf644a7/AX-SCRIPTS.lua"))()
