@@ -1,0 +1,1 @@
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/e30fdb4128e69c19ac2265ac66be750b/raw/8e81e51bdef17bf69a3082d925e08860d0c20da7/bloxStrike"))()
