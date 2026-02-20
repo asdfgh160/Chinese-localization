@@ -1,1 +1,1 @@
-loadstring(game:HttpGet(https://gist.githubusercontent.com/asdfgh160/fbf862e25a5e95633daae8293059a1dd/raw/03fe3da83836b9bffde4ef0801f2097f06f45bbe/Death%2520of%2520death'))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/fbf862e25a5e95633daae8293059a1dd/raw/03fe3da83836b9bffde4ef0801f2097f06f45bbe/Death%2520of%2520death"))()
