@@ -1,0 +1,140 @@
+local Translations = {
+["XK脚本 (zh-cn🇨🇳)"] = "XK Script (en🇺🇸)",
+["基本功能"] = "Basic",
+["解锁"] = "Unlock",
+["主要的功能，打击类"] = "Main features, strike type",
+["攻击"] = "Attack",
+["打击"] = "Strike",
+["自动轻击"] = "Auto Light Attack",
+["轻击攻击速度"] = "Light Attack Speed: 0.3",
+["自动重击"] = "Auto Heavy Attack",
+["重击攻击速度"] = "Heavy Attack Speed: 0.3",
+["动作利用"] = "Action Utilization",
+["防后坐力/硬直"] = "Anti-Recoil/Stun",
+["无击退效果"] = "No Knockback",
+["无布娃娃"] = "No Ragdoll",
+["伤害打击"] = "Damage Strike",
+["强制跳劈伤害"] = "Force Slash Damage",
+["自动跳劈"] = "Auto Slash",
+["攻击延迟"] = "Attack Delay",
+["自动"] = "Auto",
+["自动装备"] = "Auto Equip",
+["剥削"] = "Exploits",
+["一些强大且无伤害功能"] = "Some powerful non-damage features",
+["自动格挡"] = "Auto Parry",
+["格挡范围"] = "Parry Range",
+["延迟补偿"] = "Delay Compensation",
+["触发百分比"] = "Trigger Percentage",
+["God Mode"] = "上帝模式",
+["您的注入器不支持该Hook函数"] = "Your injector does not support this Hook function",
+["杀戮光环"] = "Kill Aura",
+["光环距离:"] = "Aura Distance",
+["上帝"] = "God",
+["模式"] = "Mode",
+["闪避"] = "Dodge",
+["会"] = "Will",
+["导致"] = "prevent",
+["无法"] = "not",
+["打出"] = "dealing",
+["伤害"] = "damage"
+["上帝模式"] = "God Mode",
+["自动闪避[会导致无法打出伤害]"] = "Auto Dodge [Will prevent dealing damage]",
+["界面设置"] = "Interface Settings",
+["搜索功能"] = "Search Function",
+["用户界面"] = "User Interface",
+["锁住"] = "Lock",
+["界面设置"] = "UI Settings",
+["配置与界面设置"] = "Configuration & UI Settings",
+["搜索"] = "Search",
+["调试功能"] = "Debug Features",
+["快捷菜单"] = "Quick Menu",
+["自定义光标"] = "Custom Cursor",
+["通知位置"] = "Notification Position",
+["右"] = "Right",
+["左"] = "Left",
+["UI大小"] = "UI Size",
+["菜单"] = "Menu",
+["删除"] = "Delete",
+["用户界面"] = "Toggle",
+["主题"] = "Theme",
+["背景颜色"] = "Background Color",
+["主要颜色"] = "Primary Color",
+["强调颜色"] = "Accent Color",
+["边框颜色"] = "Border Color",
+["字体颜色"] = "Font Color",
+["选择字体"] = "Select Font",
+["主题列表"] = "Theme List",
+["默认值"] = "Default",
+["设为默认值"] = "Set as Default",
+["自定义主题名称"] = "Custom Theme Name",
+["创建主题"] = "Create Theme",
+["自定义主题"] = "Custom Theme",
+["加载主题"] = "Load Theme",
+["覆盖主题"] = "Overwrite Theme",
+["删除主题"] = "Delete Theme",
+["刷新列表"] = "Refresh List",
+["重置默认值"] = "Reset Default",
+["配置"] = "Configuration",
+["配置名称"] = "Config Name",
+["创建配置"] = "Create Config",
+["配置列表"] = "Config List",
+["加载配置"] = "Load Config",
+["覆盖配置"] = "Overwrite Config",
+["删除配置"] = "Delete Config",
+["设置为自动加载"] = "Set to Auto Load",
+["重置自动装载"] = "Reset Auto Load",
+["当前自动加载配置"] = "Current Auto Load Config",
+["上帝模式"] = "God Mode",
+ ["自动闪避[会导致无法打出伤害]"] = "Auto Dodge [Will prevent dealing damage]"
+}
+
+local keys = {}
+for k in pairs(Translations) do
+    table.insert(keys, k)
+end
+table.sort(
+    keys,
+    function(a, b)
+        return #a > #b
+    end
+)
+
+local function safeReplace(text, old, new)
+    local result = ""
+    local start = 1
+    while true do
+        local i, j = string.find(text, old, start, true)
+        if not i then
+            result = result .. string.sub(text, start)
+            break
+        end
+        result = result .. string.sub(text, start, i - 1) .. new
+        start = j + 1
+    end
+    return result
+end
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then
+        return text
+    end
+    for _, k in ipairs(keys) do
+        text = safeReplace(text, k, Translations[k])
+    end
+    return text
+end
+
+local oldNewIndex
+oldNewIndex =
+    hookmetamethod(
+    game,
+    "__newindex",
+    function(self, key, value)
+        if key == "Text" and type(value) == "string" then
+            value = translateText(value)
+        end
+        return oldNewIndex(self, key, value)
+    end
+)
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DevSloPo/Main/refs/heads/main/Game/DuelArena"))()
