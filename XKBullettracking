@@ -1,0 +1,73 @@
+local Translations = {
+["服务器"] = "Server",
+["欢迎用户"] = "Welcome User",
+["游戏"] = "Game",
+["国家"] = "Country",
+["主要"] = "Main",
+["子弹追踪"] = "Bullet Tracking",
+["玩家"] = "Player ",
+["已在白名单中"] = "is already in the whitelist",
+["选择玩家"] = "Select Player",
+["添加白名单"] = "Add to Whitelist",
+["删除白名单"] = "Remove from Whitelist",
+["子追检测"] = "Bullet Track Check",
+["警告"] = "Warning",
+["检测手持物品是否支持子弹追踪"] = "Check if the held item supports bullet tracking",
+["开始检测"] = "Start Check",
+["只支持部分服务器的武器，不是全部服务器"] = "Only supports weapons on some servers, not all servers",
+["启用子追"] = "Enable Bullet Track",
+["用户界面"] = "Toggle",
+["队伍检测"] = "Team Check",
+["忽略好友"] = "Ignore Friends"
+}
+
+local keys = {}
+for k in pairs(Translations) do
+    table.insert(keys, k)
+end
+table.sort(
+    keys,
+    function(a, b)
+        return #a > #b
+    end
+)
+
+local function safeReplace(text, old, new)
+    local result = ""
+    local start = 1
+    while true do
+        local i, j = string.find(text, old, start, true)
+        if not i then
+            result = result .. string.sub(text, start)
+            break
+        end
+        result = result .. string.sub(text, start, i - 1) .. new
+        start = j + 1
+    end
+    return result
+end
+
+local function translateText(text)
+    if not text or type(text) ~= "string" then
+        return text
+    end
+    for _, k in ipairs(keys) do
+        text = safeReplace(text, k, Translations[k])
+    end
+    return text
+end
+
+local oldNewIndex
+oldNewIndex =
+    hookmetamethod(
+    game,
+    "__newindex",
+    function(self, key, value)
+        if key == "Text" and type(value) == "string" then
+            value = translateText(value)
+        end
+        return oldNewIndex(self, key, value)
+    end
+)
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/DevSloPo/Main/refs/heads/main/Universal%20_1/Bullettracking'))()
