@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/568ace84888c3023bc8947731fd55db3/raw/446680af57d3f45017833bbe754e6da9f6bdf676/YirdeX.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/30c9cb2add6ff483bc98f4b0e411799f/raw/cb614afc2ba1298ad57e21d3a30c44e496e7839f/YirdeX-Hub"))()
