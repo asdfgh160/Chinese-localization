@@ -1,1 +1,1 @@
-loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/9b2a77a0624469831dbd2f71d16bd5f3/raw/52d56ee6c30b3c23c4e979e7e893e6fc525bd119/XKForsaken.lua"))()
+loadstring(game:HttpGet("https://gist.githubusercontent.com/asdfgh160/9ac6986a73a38a50bce49e49b847c28c/raw/3369ee2e3841ab6b51e2daf8f1491ec08d6bb61d/xk"))()
